@@ -1,0 +1,28 @@
+[
+    {
+        "id": "P001",
+        "name": "Laptop",
+        "price": 1200.0,
+        "stock": 15,
+        "supplier": {
+            "supplier_id": "S001",
+            "name": "Tech Supplies",
+            "contact_email": "sales@tech.com"
+        },
+        "type": "physical",
+        "weight": 2.5
+    },
+    {
+        "id": "P002",
+        "name": "Antivirus Software",
+        "price": 59.9,
+        "stock": 30,
+        "supplier": {
+            "supplier_id": "S001",
+            "name": "Tech Supplies",
+            "contact_email": "sales@tech.com"
+        },
+        "type": "digital",
+        "download_size": 850.0
+    }
+]
