@@ -75,3 +75,45 @@ print()
 digital_product.display_information()
 
 # ProductFactory.create(product_type="service", product_id="S001", name="Installation", price=30.0, stock_quantity=5, supplier=supplier)
+
+print("\n========== VALIDATION TEST ==========")
+
+try:
+    invalid_product = ProductFactory.create(
+        product_type="physical",
+        product_id="P100",
+        name="Invalid Product",
+        price=-10.0,
+        stock_quantity=5,
+        supplier=supplier,
+        weight=1.0
+    )
+
+except ValueError as error:
+    print("Invalid price:", error)
+
+try:
+    invalid_product = ProductFactory.create(
+        product_type="physical",
+        product_id="P101",
+        name="Invalid Stock Product",
+        price=50.0,
+        stock_quantity=-5,
+        supplier=supplier,
+        weight=1.0
+    )
+
+except ValueError as error:
+    print("Invalid stock:", error)
+
+try:
+    order.add_order_line(physical_product, 0)
+
+except ValueError as error:
+    print("Invalid quantity:", error)
+
+try:
+    physical_product.update_stock(-10)
+
+except ValueError as error:
+    print("Invalid stock update:", error)

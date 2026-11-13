@@ -10,7 +10,22 @@ class Product(ABC):
         self.__stock: int = stock
         self.__supplier: Supplier = supplier
 
+        if price < 0:
+            raise ValueError("Price cannot be negative.")
+        if stock < 0:
+            raise ValueError("Stock quantity cannot be negative.")
+
+        self.__product_id: str = product_id
+        self.__name: str = name
+        self.__price: float = price
+        self.__stock: int = stock
+        self.__supplier: Supplier = supplier
+
     def update_stock(self, quantity: int) -> None:
+
+        if quantity < 0:
+            raise ValueError("Stock quantity cannot be negative.")
+        
         self.__stock = quantity
 
     def display_information(self) -> None:
