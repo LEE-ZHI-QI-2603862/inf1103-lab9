@@ -50,18 +50,5 @@
         },
         "type": "digital",
         "download_size": 15.0
-    },
-    {
-        "id": "P005",
-        "name": "Tablet",
-        "price": 5.0,
-        "stock": 5,
-        "supplier": {
-            "supplier_id": "5",
-            "name": "5",
-            "contact_email": "5"
-        },
-        "type": "physical",
-        "weight": 5.0
     }
 ]
