@@ -50,5 +50,18 @@
         },
         "type": "digital",
         "download_size": 15.0
+    },
+    {
+        "id": "P005",
+        "name": "tablet",
+        "price": 12.5,
+        "stock": 15,
+        "supplier": {
+            "supplier_id": "S001",
+            "name": "Tech Supplies",
+            "contact_email": "sales@tech.com"
+        },
+        "type": "physical",
+        "weight": 0.8
     }
 ]
