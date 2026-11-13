@@ -5,6 +5,8 @@ from order import Order
 from bulk_discount import BulkDiscount
 from percentage_discount import PercentageDiscount
 from student_discount import StudentDiscount
+from inventory import Inventory
+from product_loader import load_products
 
 supplier = Supplier("S001", "Tech Supplies Inc.", "sales@tech.com")
 
@@ -117,3 +119,23 @@ try:
 
 except ValueError as error:
     print("Invalid stock update:", error)
+
+print("\n========== CSV LOADING TEST ==========")
+
+csv_inventory = Inventory()
+
+csv_supplier = Supplier(
+    "S001",
+    "Default Supplier",
+    "supplier@example.com"
+)
+
+load_products(
+    "products.csv",
+    csv_inventory,
+    csv_supplier
+)
+
+print("\nProducts successfully loaded:")
+
+csv_inventory.display_all()
