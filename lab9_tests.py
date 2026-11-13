@@ -30,3 +30,48 @@ order.set_discount(StudentDiscount())
 
 print("Student Discount:")
 print(order.calculate_total())
+
+
+from product_factory import ProductFactory
+from supplier import Supplier
+
+
+supplier = Supplier(
+    "S001",
+    "Tech Supplies",
+    "sales@tech.com"
+)
+
+
+print("\n========== FACTORY TEST ==========")
+
+
+physical_product = ProductFactory.create(
+    product_type="physical",
+    product_id="P001",
+    name="Laptop",
+    price=1200.0,
+    stock_quantity=10,
+    supplier=supplier,
+    weight=2.5
+)
+
+
+digital_product = ProductFactory.create(
+    product_type="digital",
+    product_id="D001",
+    name="Photo Editor",
+    price=49.90,
+    stock_quantity=100,
+    supplier=supplier,
+    download_size=500
+)
+
+
+physical_product.display_information()
+
+print()
+
+digital_product.display_information()
+
+# ProductFactory.create(product_type="service", product_id="S001", name="Installation", price=30.0, stock_quantity=5, supplier=supplier)

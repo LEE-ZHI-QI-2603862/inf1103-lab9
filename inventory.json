@@ -24,5 +24,31 @@
         },
         "type": "digital",
         "download_size": 850.0
+    },
+    {
+        "id": "P003",
+        "name": "Phone",
+        "price": 1500.0,
+        "stock": 20,
+        "supplier": {
+            "supplier_id": "S001",
+            "name": "Tech Supplies",
+            "contact_email": "sales@tech.com"
+        },
+        "type": "physical",
+        "weight": 0.5
+    },
+    {
+        "id": "P004",
+        "name": "E-sim",
+        "price": 10.0,
+        "stock": 50,
+        "supplier": {
+            "supplier_id": "S001",
+            "name": "Tech Supplies",
+            "contact_email": "sales@tech.com"
+        },
+        "type": "digital",
+        "download_size": 15.0
     }
 ]

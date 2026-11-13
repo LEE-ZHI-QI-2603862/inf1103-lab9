@@ -4,8 +4,7 @@ import os
 from inventory import Inventory
 from product import Product
 from supplier import Supplier
-from physical_product import PhysicalProduct
-from digital_product import DigitalProduct
+from product_factory import ProductFactory
 
 def load_inventory() -> Inventory:
     inventory = Inventory()
@@ -26,24 +25,16 @@ def load_inventory() -> Inventory:
                  supplier_data["contact_email"]
           )
 
-            if item["type"] == "physical":
-                 product = PhysicalProduct(
-                      item["id"],
-                      item["name"],
-                      item["price"],
-                      item["stock"],
-                      item["weight"],
-                      supplier
+            product = ProductFactory.create(
+                product_type=item["type"],
+                product_id=item["id"],
+                name=item["name"],
+                price=item["price"],
+                stock_quantity=item["stock"],
+                supplier=supplier,
+                weight=item.get("weight"),
+                download_size=item.get("download_size")
             )
-            elif item["type"] == "digital":
-                 product = DigitalProduct(
-                      item["id"],
-                      item["name"],
-                      item["price"],
-                      item["stock"],
-                      item["download_size"],
-                      supplier
-                )
 
             inventory.add_product(product)
 
@@ -109,13 +100,14 @@ while True:
 
           if product_type == "1":
                weight = float(input("Weight (kg): "))
-               product = PhysicalProduct(
-                    product_id,
-                    name,
-                    price,
-                    stock,
-                    weight,
-                    supplier
+               product = ProductFactory.create(
+                    product_type="physical",
+                    product_id=product_id,
+                    name=name,
+                    price=price,
+                    stock_quantity=stock,
+                    supplier=supplier,
+                    weight=weight
                )
                
                inventory.add_product(product)
@@ -126,16 +118,18 @@ while True:
                       input("Download Size (MB): ")
                )
                
-               product = DigitalProduct(
-                    product_id,
-                    name,
-                    price,
-                    stock,
-                    download_size,
-                    supplier
+               product = ProductFactory.create(
+                    product_type="digital",  
+                    product_id=product_id,
+                    name=name,
+                    price=price,
+                    stock_quantity=stock,
+                    supplier=supplier,
+                    download_size=download_size
                )
-               
+
                inventory.add_product(product)
+               
                print("Digital product added successfully!")
           else:
                print("Invalid product type.")
